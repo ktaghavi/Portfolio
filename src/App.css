@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
+.skills-grid {
+  display: grid;
+  gap: 2rem; /* Adjust gap between columns */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns of equal width */
+  justify-items: center; /* Center items horizontally */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.skill-column {
+  max-width: 300px; /* Adjust based on your content and preference */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (min-width: 640px) { /* Tailwind's 'sm' breakpoint */
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px; /* Set a fixed width for the logo */
+  height: 80px; /* Set a fixed height for the logo */
+  overflow: hidden; /* Ensures the logo doesn't exceed the container */
+}
+
+.logo-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.skill-card {
+  width: 100%;; /* Adjust based on your preference */
+  height: 200px; /* Adjust based on your preference */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Example shadow */
+  background-color: #f9f9f9; /* Light grey background */
+  border-radius: 8px; /* Rounded corners */
+  transition: transform 0.3s ease; /* Smooth transform on hover */
 }
 
-.App-link {
-  color: #61dafb;
+.skill-card:hover {
+  transform: scale(1.05); /* Slightly enlarge cards on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.skill-category {
+  margin-bottom: 20px; /* Spacing between category heading and cards */
+}
+
+.skill-name {
+  text-align: center;
+  margin-top: 12px; /* Spacing between logo and text */
 }

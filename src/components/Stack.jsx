@@ -1,14 +1,15 @@
 import React from 'react';
-import JS_logo from 'src/assets/JS_logo.svg';
-import Python_logo from 'src/assets/Python_logo.svg';
-import HTML_logo from 'src/assets/HTML_logo.svg';
-import CSS_logo from 'src/assets/CSS_logo.svg';
-import SQL_logo from 'src/assets/SQL_logo.svg';
-import React_logo from 'src/assets/React_logo.png';
-import Flask_logo from 'src/assets/Flask_logo.png';
-import Tailwind_logo from 'src/assets/Tailwind_logo.png';
-import Figma_logo from 'src/assets/Figma_logo.svg';
-import VSC_logo from 'src/assets/VSC_logo.png';
+import '../App.css'
+import JS_logo from '../assets/JS_logo.svg';
+import Python_logo from '../assets/Python_logo.svg';
+import HTML_logo from '../assets/HTML_logo.svg';
+import CSS_logo from '../assets/CSS_logo.svg';
+import SQL_logo from '../assets/SQL_logo.png';
+import React_logo from '../assets/React_logo.png';
+import Flask_logo from '../assets/Flask_logo.png';
+import Tailwind_logo from '../assets/Tailwind_logo.png';
+import Figma_logo from '../assets/Figma_logo.png';
+import VSC_logo from '../assets/VSC_logo.png';
 
 const skills = [
   {
@@ -39,22 +40,50 @@ const skills = [
 ];
 
 const Stack = () => {
+  // Assuming 'skills' is your array of skills from the component props or defined within this component
+
+  // Splitting the original skills array into two columns
+  const columnOneSkills = skills.filter(skill => skill.category === "Languages");
+  const columnTwoSkills = skills.filter(skill => skill.category !== "Languages");
+
   return (
-    <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold text-center mb-6">Tech Stack</h2>
-      {skills.map((skillCategory, index) => (
-        <div key={index} className="mb-4">
-          <h3 className="text-xl font-semibold mb-2">{skillCategory.category}</h3>
-          <div className="flex flex-wrap justify-center">
-            {skillCategory.items.map((item, itemIndex) => (
-              <a key={itemIndex} href={item.url} target="_blank" rel="noopener noreferrer" className="m-2 flex flex-col items-center">
-                <img src={item.logo} alt={`${item.name} logo`} className="w-16 h-16 object-contain" />
-                <span className="mt-2 text-sm text-gray-700">{item.name}</span>
-              </a>
-            ))}
-          </div>
+    <div className="max-w-4xl mx-auto my-10 p-8 bg-white shadow-lg rounded-lg">
+      <h2 className="text-4xl font-bold text-center mb-8">Tech Stack</h2>
+      <div className="skills-grid">
+        {/* Column 1: Languages */}
+        <div className="skill-column">
+          {columnOneSkills.map((skillCategory, index) => (
+            <div key={index}>
+              <h3 className="text-2xl font-semibold mb-4 text-center">{skillCategory.category}</h3>
+              {skillCategory.items.map((item, itemIndex) => (
+                <a key={itemIndex} href={item.url} target="_blank" rel="noopener noreferrer" className="skill-card mb-4">
+                  <div className="logo-container">
+                    <img src={item.logo} alt={`${item.name} logo`} className="logo-img" />
+                  </div>
+                  <span className="skill-name text-sm">{item.name}</span>
+                </a>
+              ))}
+            </div>
+          ))}
         </div>
-      ))}
+        
+        {/* Column 2: Frameworks/Libraries and Tools/Platforms */}
+        <div className="skill-column">
+          {columnTwoSkills.map((skillCategory, index) => (
+            <div key={index}>
+              <h3 className="text-2xl font-semibold mb-4 text-center">{skillCategory.category}</h3>
+              {skillCategory.items.map((item, itemIndex) => (
+                <a key={itemIndex} href={item.url} target="_blank" rel="noopener noreferrer" className="skill-card mb-4">
+                  <div className="logo-container">
+                    <img src={item.logo} alt={`${item.name} logo`} className="logo-img" />
+                  </div>
+                  <span className="skill-name text-sm">{item.name}</span>
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
