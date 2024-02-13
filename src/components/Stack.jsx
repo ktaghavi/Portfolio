@@ -40,49 +40,21 @@ const skills = [
 ];
 
 const Stack = () => {
-  // Assuming 'skills' is your array of skills from the component props or defined within this component
-
-  // Splitting the original skills array into two columns
-  const columnOneSkills = skills.filter(skill => skill.category === "Languages");
-  const columnTwoSkills = skills.filter(skill => skill.category !== "Languages");
-
   return (
-    <div className="max-w-4xl mx-auto my-10 p-8 bg-white shadow-lg rounded-lg">
-      <h2 className="text-4xl font-bold text-center mb-8">Tech Stack</h2>
-      <div className="skills-grid">
-        {/* Column 1: Languages */}
-        <div className="skill-column">
-          {columnOneSkills.map((skillCategory, index) => (
-            <div key={index}>
-              <h3 className="text-2xl font-semibold mb-4 text-center">{skillCategory.category}</h3>
-              {skillCategory.items.map((item, itemIndex) => (
-                <a key={itemIndex} href={item.url} target="_blank" rel="noopener noreferrer" className="skill-card mb-4">
-                  <div className="logo-container">
-                    <img src={item.logo} alt={`${item.name} logo`} className="logo-img" />
-                  </div>
-                  <span className="skill-name text-sm">{item.name}</span>
-                </a>
-              ))}
-            </div>
-          ))}
-        </div>
-        
-        {/* Column 2: Frameworks/Libraries and Tools/Platforms */}
-        <div className="skill-column">
-          {columnTwoSkills.map((skillCategory, index) => (
-            <div key={index}>
-              <h3 className="text-2xl font-semibold mb-4 text-center">{skillCategory.category}</h3>
-              {skillCategory.items.map((item, itemIndex) => (
-                <a key={itemIndex} href={item.url} target="_blank" rel="noopener noreferrer" className="skill-card mb-4">
-                  <div className="logo-container">
-                    <img src={item.logo} alt={`${item.name} logo`} className="logo-img" />
-                  </div>
-                  <span className="skill-name text-sm">{item.name}</span>
-                </a>
-              ))}
-            </div>
-          ))}
-        </div>
+    <div className="stack-container">
+      <h2 className="title">Tech Stack</h2>
+      <div className="skills-list">
+        {skills.map((skillCategory, index) => (
+          <div key={index} className="skill-category">
+            <h3 className="category-title">{skillCategory.category}</h3>
+            {skillCategory.items.map((item, itemIndex) => (
+              <a key={itemIndex} href={item.url} target="_blank" rel="noopener noreferrer" className="skill-card">
+                <img src={item.logo} alt={`${item.name} logo`} className="logo-img" />
+                <span className="skill-name">{item.name}</span>
+              </a>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
