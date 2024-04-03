@@ -41,6 +41,13 @@
 }
 
 /* Logo image styling */
+.profile-img {
+  width: 120px; /* Adjusted for uniformity */
+  height: 120px; /* Adjusted for uniformity */
+  margin-right: 20px; /* Space between logo and text */
+}
+
+/* Logo image styling */
 .logo-img {
   width: 50px; /* Adjusted for uniformity */
   height: 50px; /* Adjusted for uniformity */

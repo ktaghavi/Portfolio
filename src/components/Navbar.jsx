@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
@@ -11,6 +11,23 @@ import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState('home');
   const navigate = useNavigate(); // Use the useNavigate hook
+  const location = useLocation(); // Use the useLocation hook to get the current location object
+
+  useEffect(() => {
+    // Set the value based on the current pathname
+    const path = location.pathname; // Get the current path
+    if (path === '/') {
+      setValue('home');
+    } else if (path.startsWith('/projects')) {
+      setValue('projects');
+    } else if (path.startsWith('/contact')) {
+      setValue('contact');
+    } else if (path.startsWith('/stack')) {
+      setValue('stack');
+    } else if (path.startsWith('/resume')) {
+      setValue('resume');
+    }
+  }, [location]); // This effect runs when the location changes
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
