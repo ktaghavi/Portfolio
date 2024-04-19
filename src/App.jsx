@@ -5,7 +5,7 @@ import HomePage from './components/HomePage.jsx';
 import Projects from './components/Projects.jsx';
 import Stack from './components/Stack.jsx';
 import ContactForm from './components/ContactForm.jsx';
-import Resume from './components/Resume.jsx';
+import Resume from './components/Resume/Resume.jsx';
 
 const App = () => {
   return (
